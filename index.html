@@ -19,6 +19,9 @@
   --ok:#2A6E50;
   --off:#7A7F9C;
   --shadow:rgba(21,24,50,.08);
+  --on-accent:#FFFFFF;
+  --shot:#FFFFFF;
+  --scrim:rgba(14,16,32,.88);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -36,6 +39,8 @@
     --ok:#5FBF95;
     --off:#7C82A4;
     --shadow:rgba(0,0,0,.4);
+    --on-accent:#0E1020;
+    color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
@@ -53,6 +58,8 @@
   --ok:#5FBF95;
   --off:#7C82A4;
   --shadow:rgba(0,0,0,.4);
+  --on-accent:#0E1020;
+  color-scheme:dark;
 }
 
 *{box-sizing:border-box}
@@ -360,7 +367,7 @@ ul.items li::before{
 }
 .addon-price b{font-family:"Unbounded",sans-serif;font-weight:600;font-size:22px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
 .addon-price span{font-size:13px;color:var(--muted)}
-.price-list{margin-top:44px}
+.price-list{margin-top:0}
 .price-list td.sum{font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:700;white-space:nowrap;text-align:right}
 .price-list td.unit{color:var(--muted);white-space:nowrap}
 .price-list th.r{text-align:right}
@@ -418,6 +425,147 @@ ul.items li::before{
   .order{grid-template-columns:1fr;padding:20px}
   .order-btn{white-space:normal;text-align:center;width:100%}
 }
+/* ---------- articles: done for you ---------- */
+.tariffs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.tariff{
+  background:var(--surface);border:1px solid var(--line);
+  padding:24px;display:flex;flex-direction:column;gap:14px;
+  box-shadow:0 1px 2px var(--shadow);min-width:0;
+}
+.tariff.best{border:2px solid var(--accent);background:linear-gradient(180deg,var(--accent-soft) 0%,var(--surface) 60%)}
+.tariff-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.tariff-tag{
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent);
+}
+.tariff h3{font-size:18px}
+.tariff-price{display:flex;flex-direction:column;gap:6px}
+.tariff-price b{
+  font-family:"Unbounded",sans-serif;font-weight:800;
+  font-size:clamp(30px,4.4vw,40px);line-height:1;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.tariff-price b span{font-size:.42em;font-weight:400;color:var(--muted);margin-left:6px;letter-spacing:0}
+.tariff-price small{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ochre)}
+.tariff > p{font-size:15px;color:var(--muted)}
+.tariff-btn{
+  margin-top:auto;align-self:flex-start;
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--accent);background:var(--surface);color:var(--accent);
+  font:600 15px "Golos Text","Helvetica Neue",Arial,sans-serif;
+  padding:10px 18px;border-radius:4px;cursor:pointer;
+  transition:background .15s,color .15s;
+}
+.tariff-btn:hover{background:var(--accent-soft)}
+.tariff-btn[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.incl{
+  border:1px solid var(--line);background:var(--surface);
+  display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);
+}
+.incl > div{padding:22px 24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.incl > div + div{border-left:1px solid var(--line);background:var(--surface-2)}
+.incl h4{
+  margin:0;font-family:"JetBrains Mono",monospace;font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--muted);
+}
+.incl ul.items li::before{background:var(--accent)}
+.incl p{font-size:15px;color:var(--muted)}
+.incl p b{color:var(--ink);font-weight:600}
+.to-order{font-size:14.5px;font-weight:500;margin-top:auto}
+@media (max-width:720px){
+  .incl{grid-template-columns:1fr}
+  .incl > div + div{border-left:none;border-top:1px solid var(--line)}
+}
+
+/* ---------- case ---------- */
+.kpis{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);
+}
+.kpi{background:var(--surface);padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.kpi-fig{
+  font-family:"Unbounded",sans-serif;font-weight:600;
+  font-size:clamp(30px,3.8vw,40px);line-height:1;letter-spacing:-.03em;
+  color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.kpi-label{font-size:15.5px;font-weight:600;line-height:1.35}
+.kpi-sub{margin-top:auto;font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--muted);line-height:1.5;font-variant-numeric:tabular-nums}
+.case-facts{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.case-facts > div{padding:16px 20px 16px 0;display:flex;flex-direction:column;gap:4px;min-width:0}
+.case-facts > div + div{padding-left:20px;border-left:1px solid var(--line)}
+.case-facts dt{
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);
+}
+.case-facts dd{margin:0;font-size:16px;font-weight:600;line-height:1.4}
+.shot{margin:0;border:1px solid var(--line);background:var(--surface);display:grid;grid-template-columns:minmax(0,1fr)}
+.shot.side{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr)}
+.shot-img{
+  display:block;width:100%;padding:0;margin:0;border:0;
+  background:var(--shot);cursor:zoom-in;line-height:0;
+}
+.shot-img img{display:block;width:100%;height:auto}
+.shot.side .shot-img{border-right:1px solid var(--line)}
+.shot:not(.side) .shot-img{border-bottom:1px solid var(--line)}
+.shot figcaption{padding:20px 22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.shot figcaption .eyebrow{font-size:11px;color:var(--ochre)}
+.shot figcaption strong{font-size:17px;font-weight:600;line-height:1.3}
+.shot figcaption p{font-size:15px;color:var(--muted)}
+.shot figcaption p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.zoom-hint{margin-top:auto;font-size:13px;color:var(--muted)}
+.shot-data{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 22px;margin:0}
+.shot-data > div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.shot-data dt{font-size:13.5px;color:var(--muted)}
+.shot-data dd{margin:0;font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+.shot-data dd span{font-weight:400;color:var(--ok)}
+.zoom{
+  position:fixed;inset:0;z-index:50;background:var(--scrim);overflow:auto;cursor:zoom-out;
+  padding:calc(env(safe-area-inset-top,0px) + 64px) 16px calc(env(safe-area-inset-bottom,0px) + 24px);
+}
+.zoom img{display:block;max-width:none;margin:0 auto;background:var(--shot);box-shadow:0 10px 40px rgba(0,0,0,.45)}
+.zoom-close{
+  position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);right:16px;
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);
+  font:600 14px "Golos Text","Helvetica Neue",Arial,sans-serif;
+  padding:8px 14px;border-radius:4px;cursor:pointer;
+}
+@media (max-width:900px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:820px){
+  .shot.side{grid-template-columns:minmax(0,1fr)}
+  .shot.side .shot-img{border-right:none;border-bottom:1px solid var(--line)}
+}
+@media (max-width:720px){
+  .case-facts{grid-template-columns:1fr}
+  .case-facts > div{padding:14px 0}
+  .case-facts > div + div{padding-left:0;border-left:none;border-top:1px solid var(--line)}
+}
+@media (max-width:460px){.kpis{grid-template-columns:1fr}}
+
+/* ---------- forecast ---------- */
+.fc{min-width:680px}
+.fc td,.fc th{vertical-align:middle}
+.fc th.c,.fc td.rng{text-align:center}
+.fc td.scn{width:38%}
+.fc td.scn strong{display:block;font-weight:600;font-size:16px;line-height:1.35}
+.fc td.scn span{display:block;font-size:14px;color:var(--muted);line-height:1.45;margin-top:4px}
+.fc td.rng{
+  font-family:"JetBrains Mono",monospace;font-weight:700;font-size:15.5px;
+  white-space:nowrap;font-variant-numeric:tabular-nums;
+}
+.fc td.rng small{display:block;font-weight:400;font-size:12px;color:var(--ochre);margin-top:4px;white-space:normal}
+.fc tr.mark td{background:var(--accent-soft)}
+.fc .tag{
+  display:inline-block;margin-top:8px;padding:2px 8px;border:1px solid var(--accent);font-style:normal;
+  font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);
+}
+.factors{border:1px solid var(--line);background:var(--surface)}
+.factors .inv-col.out li{color:var(--ink)}
+.fc-note{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+
 footer{padding:26px 0 44px;color:var(--muted);font-size:13.5px}
 
 @media (max-width:720px){
@@ -625,14 +773,14 @@ footer{padding:26px 0 44px;color:var(--muted);font-size:13.5px}
         <ul class="items">
           <li>Подписка Claude Pro — около $20 в месяц, оформляете и оплачиваете её вы</li>
           <li>Тариф Tilda с функцией «Поток» — должен быть у вас</li>
-          <li>Написание статей за вас: линию вы ведёте сами</li>
+          <li><span>Написание статей за вас. Если не хотите вести блог сами, подключите <a href="#articles">статьи под ключ</a> от 20 000 ₽ в месяц</span></li>
           <li>Закупка ссылок, дизайн сайта, техническая переделка платформы</li>
           <li>Подключение второго сайта и использование системы для ваших клиентов — по отдельной договорённости</li>
           <li>Гарантии позиций в выдаче — их не даёт никто, кто говорит честно</li>
         </ul>
       </div>
     </div>
-    <div class="inv-note">Если нужен вариант «мы ведём линию за вас» — это уже отдельная работа с ежемесячной оплатой, обсуждаем отдельно от этого предложения.</div>
+    <div class="inv-note">Если не хотите вести блог сами, статьи напишет наш специалист: 10 статей за 20 000 ₽ или 20 статей за 30 000 ₽ в месяц. Тарифы и состав работ описаны в разделе <a href="#articles">«Статьи под ключ»</a>.</div>
   </div>
 </section>
 
@@ -957,20 +1105,217 @@ footer{padding:26px 0 44px;color:var(--muted);font-size:13.5px}
     </div>
   </div>
 
-  <div class="price-list" id="order">
-    <div class="sub-h" style="margin-top:0">Сводный прайс и заказ</div>
-    <p class="pick-hint">Отметьте услуги, которые хотите добавить к внедрению. Итог пересчитается, а выбранные позиции попадут в сообщение.</p>
+</section>
+
+<section id="articles">
+  <div class="sec-head">
+    <div class="eyebrow">Статьи под ключ</div>
+    <h2>Не хотите вести блог сами? Статьи напишет наш специалист</h2>
+    <p>Специалист работает на этой же системе и по тому же регламенту: собирает семантику, пишет статьи и публикует их в ваш блог. Оплата ежемесячная.</p>
+  </div>
+  <div class="stack-lg">
+    <div class="tariffs">
+      <div class="tariff">
+        <div class="tariff-top"><span class="tariff-tag">Ровный поток</span></div>
+        <h3>10 статей в месяц</h3>
+        <div class="tariff-price"><b>20 000<span>₽ / мес</span></b><small>2 000 ₽ за статью</small></div>
+        <p>Две-три статьи в неделю. Блог регулярно пополняется, а поисковики видят, что сайт живой.</p>
+        <button class="tariff-btn" type="button" id="pick-art10" data-pick="o-art10" aria-pressed="false">Добавить в заказ</button>
+      </div>
+      <div class="tariff best">
+        <div class="tariff-top"><span class="tariff-tag">Быстрый рост</span><span class="tariff-tag">−25% за статью</span></div>
+        <h3>20 статей в месяц</h3>
+        <div class="tariff-price"><b>30 000<span>₽ / мес</span></b><small>1 500 ₽ за статью</small></div>
+        <p>Около пяти статей в неделю. Семантика закрывается вдвое быстрее, и первые результаты в поиске приходят раньше.</p>
+        <button class="tariff-btn" type="button" id="pick-art20" data-pick="o-art20" aria-pressed="false">Добавить в заказ</button>
+      </div>
+    </div>
+    <div class="incl">
+      <div>
+        <h4>Что входит в каждую статью</h4>
+        <ul class="items">
+          <li>Семантика из Wordstat и место статьи в контент-плане вашего сайта</li>
+          <li>Текст от 30 000 знаков по регламенту: прямой ответ в первом абзаце, факты и цифры с источниками, FAQ</li>
+          <li>Разметка Schema.org и внутренние ссылки на ваши страницы</li>
+          <li>Автоматическая проверка по 24 критериям перед выкладкой</li>
+          <li>Публикация в Поток вашей Tilda</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Что нужно от вас</h4>
+        <p><b>Доступ к Tilda</b> для публикации и <b>согласование списка тем</b> на месяц. Остальное специалист делает сам.</p>
+        <a class="to-order" href="#order">Выбрать тариф в сводном прайсе ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="case">
+  <div class="sec-head">
+    <div class="eyebrow">Кейс · hot-head.ru/blog</div>
+    <h2>Наш блог на этой системе: +207% переходов из поиска за год</h2>
+    <p>Раздел «Блог» на hot-head.ru целиком написан системой. До неё SEO на сайте не делали ни разу. Сравниваем 23 августа – 23 сентября 2026 года с тем же периодом 2025-го по данным Яндекс Метрики и Вебмастера.</p>
+  </div>
+  <div class="stack-lg">
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-fig">+207%</div>
+        <div class="kpi-label">переходов из поисковых систем</div>
+        <div class="kpi-sub">313 → 962 визита</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-fig">22 мин</div>
+        <div class="kpi-label">среднее время на сайте у посетителей из поиска</div>
+        <div class="kpi-sub">было 8 мин 5 с · +178%</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-fig">+68%</div>
+        <div class="kpi-label">обращений из поиска: заявки с формы и переходы в мессенджер</div>
+        <div class="kpi-sub">22 → 37 достижений целей</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-fig">59,6%</div>
+        <div class="kpi-label">запросов с упоминанием сайта в ответах Алисы AI</div>
+        <div class="kpi-sub">7–13 сентября 2026 · топ-3 по упоминаниям</div>
+      </div>
+    </div>
+
+    <dl class="case-facts">
+      <div><dt>Исходная точка</dt><dd>SEO на сайте не делали никогда</dd></div>
+      <div><dt>Срок работы системы</dt><dd>3 месяца</dd></div>
+      <div><dt>Статей в блоге</dt><dd>75 к 23 сентября 2026, сейчас 108</dd></div>
+    </dl>
+
+    <figure class="shot side">
+      <button class="shot-img" type="button" aria-label="Открыть скриншот Вебмастера в полном размере">
+        <img src="case-alice.jpg" width="790" height="748" alt="Яндекс Вебмастер, видимость сайта hot-head.ru в Алисе AI: сайт в топ-3 по упоминаниям, доля запросов на неделе 7–13 сентября 2026 — 59,58%">
+      </button>
+      <figcaption>
+        <div class="eyebrow">Яндекс Вебмастер · Видимость в Алисе AI</div>
+        <strong>Сайт в топ-3 по упоминаниям</strong>
+        <p>Share of Voice показывает, в какой доле запросов hot-head.ru попадает в список источников Алисы AI. С 13 июля доля держится на уровне <b>46–60%</b>, на неделе 7–13 сентября 2026 — <b>59,58%</b>.</p>
+        <p>Алиса берёт источники из поисковой выдачи, поэтому видимость в ИИ-ответах растёт вслед за позициями статей.</p>
+        <span class="zoom-hint">Нажмите на скриншот, чтобы открыть его в полном размере</span>
+      </figcaption>
+    </figure>
+
+    <figure class="shot">
+      <button class="shot-img" type="button" aria-label="Открыть скриншот Метрики в полном размере">
+        <img src="case-metrika.jpg" width="1266" height="766" alt="Яндекс Метрика, источники трафика hot-head.ru: сравнение 23 августа – 23 сентября 2025 и 2026 года. Переходы из поисковых систем 313 и 962 (+207,35%), время на сайте 8 мин 5 с и 22 мин 33 с (+178,48%), достижения избранных целей 22 и 37 (+68,18%)">
+      </button>
+      <figcaption>
+        <div class="eyebrow">Яндекс Метрика · Источники трафика, 2025 (A) и 2026 (B)</div>
+        <dl class="shot-data">
+          <div><dt>Переходы из поиска</dt><dd>313 → 962 <span>+207,35%</span></dd></div>
+          <div><dt>Время на сайте, поиск</dt><dd>8:05 → 22:33 <span>+178,48%</span></dd></div>
+          <div><dt>Обращения из поиска</dt><dd>22 → 37 <span>+68,18%</span></dd></div>
+          <div><dt>Все визиты на сайт</dt><dd>1 068 → 1 820 <span>+70,41%</span></dd></div>
+        </dl>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="forecast">
+  <div class="sec-head">
+    <div class="eyebrow">Прогноз</div>
+    <h2>На сколько вырастет трафик из поиска на вашем сайте</h2>
+    <p>Рост зависит от того, с какой точки вы стартуете. Чем меньше SEO делали раньше, тем больше процент прироста. Вилки ниже рассчитаны на трафик из Яндекса и Google при 10–20 статьях в месяц и нише средней конкуренции.</p>
+  </div>
+  <div class="stack-lg">
+    <div class="sheet-scroll">
+      <table class="fc">
+        <thead><tr><th>Исходное состояние сайта</th><th class="c">Через 3 месяца</th><th class="c">Через 6 месяцев</th><th class="c">Через 12 месяцев</th></tr></thead>
+        <tbody>
+          <tr class="mark">
+            <td class="scn"><strong>SEO не делали</strong><span>Блога нет или он пустой, из поиска приходят в основном по названию компании</span><em class="tag">Как в нашем кейсе</em></td>
+            <td class="rng">+50…200%<small>кейс hot-head.ru: +207%</small></td>
+            <td class="rng">+100…300%</td>
+            <td class="rng">+200…500%</td>
+          </tr>
+          <tr>
+            <td class="scn"><strong>Базовое SEO</strong><span>Структура и мета-теги в порядке, статьи выходят нерегулярно</span></td>
+            <td class="rng">+15…50%</td>
+            <td class="rng">+40…120%</td>
+            <td class="rng">+80…200%</td>
+          </tr>
+          <tr>
+            <td class="scn"><strong>Активное SEO</strong><span>Контент выходит регулярно, сайт уже в топ-10 по основным запросам</span></td>
+            <td class="rng">+5…20%</td>
+            <td class="rng">+15…50%</td>
+            <td class="rng">+30…100%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout"><b>Пример.</b> Сейчас из поиска приходит 500 визитов в месяц, SEO раньше не делали. Через 6 месяцев ожидаем 1 000–2 000 визитов в месяц, через 12 месяцев — 1 500–3 000.</div>
+
+    <div class="factors">
+      <div class="inv-cols">
+        <div class="inv-col in">
+          <h4>Ближе к верхней границе</h4>
+          <ul class="items">
+            <li>20 статей в месяц вместо 10</li>
+            <li>Узкая или региональная ниша</li>
+            <li>По теме есть заметный спрос в Wordstat</li>
+            <li>Сайт быстрый и индексируется без ошибок</li>
+            <li>Старые статьи регулярно обновляются</li>
+          </ul>
+        </div>
+        <div class="inv-col out">
+          <h4>Ближе к нижней границе</h4>
+          <ul class="items">
+            <li>Высокая конкуренция: финансы, медицина, федеральный e-commerce</li>
+            <li>Молодой домен без истории</li>
+            <li>Технические ошибки индексации</li>
+            <li>Статьи выходят реже, чем по плану</li>
+            <li>Спрос по теме небольшой</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="gates">
+      <div class="gate">
+        <div class="mono">Обращения</div>
+        <strong>Заявки растут медленнее трафика</strong>
+        <p>Статьи собирают в основном информационный спрос. В кейсе визиты из поиска выросли на 207%, а обращения на 68%. Закладывайте рост заявок от трети до половины роста трафика.</p>
+      </div>
+      <div class="gate">
+        <div class="mono">Сроки</div>
+        <strong>Первые переходы через 3–6 недель</strong>
+        <p>Из Яндекса новые статьи обычно начинают приводить посетителей через 3–6 недель после публикации, из Google через 2–4 месяца. Поэтому первые три месяца дают самый осторожный результат.</p>
+      </div>
+      <div class="gate">
+        <div class="mono">Алиса AI и Нейро</div>
+        <strong>ИИ-ответы растут вслед за поиском</strong>
+        <p>ИИ-ответы Яндекса опираются на поисковую выдачу. Когда статьи выходят в топ, сайт начинает попадать в источники Алисы: в кейсе это 59,6% запросов.</p>
+      </div>
+    </div>
+
+    <p class="fc-note">Прогноз основан на нашем кейсе и типовой динамике контентного SEO. Это оценка, а не гарантия: на выдачу влияют алгоритмы поисковых систем и действия конкурентов. Вилку под ваш сайт уточним по данным Метрики до старта, напишите нам в Telegram.</p>
+  </div>
+</section>
+
+<section id="order">
+  <div class="sec-head">
+    <div class="eyebrow">Заказ</div>
+    <h2>Сводный прайс и заказ</h2>
+    <p>Отметьте услуги, которые хотите добавить к внедрению. Из двух тарифов статей можно выбрать один. Итог пересчитается, а выбранные позиции попадут в сообщение в Telegram.</p>
+  </div>
+  <div class="price-list">
     <div class="sheet-scroll">
       <table>
         <thead><tr><th class="pick-col">В заказ</th><th>Услуга</th><th>Период</th><th class="r">Стоимость</th></tr></thead>
-        <tbody><tr class="base"><td class="pick"><input class="cb" type="checkbox" checked disabled aria-label="Внедрение системы — включено в заказ"></td><td>Внедрение системы потокового производства SEO- и GEO-статей</td><td class="unit">единоразово</td><td class="sum">100&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-gacc" data-name="Покупка аккаунта Google и регистрация в Claude" data-unit="единоразово" data-price="5000" data-type="once"></td><td><label for="o-gacc">Покупка аккаунта Google и регистрация в Claude</label></td><td class="unit">единоразово</td><td class="sum">5&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-metrika" data-name="Подключение Яндекс Метрики" data-unit="единоразово" data-price="5000" data-type="once"></td><td><label for="o-metrika">Подключение Яндекс Метрики</label></td><td class="unit">единоразово</td><td class="sum">5&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-webmaster" data-name="Подключение Яндекс Вебмастера" data-unit="единоразово" data-price="5000" data-type="once"></td><td><label for="o-webmaster">Подключение Яндекс Вебмастера</label></td><td class="unit">единоразово</td><td class="sum">5&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-gsc" data-name="Подключение Google Search Console" data-unit="единоразово" data-price="5000" data-type="once"></td><td><label for="o-gsc">Подключение Google Search Console</label></td><td class="unit">единоразово</td><td class="sum">5&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-support" data-name="Пакет техподдержки, 5 часов" data-unit="в месяц" data-price="10000" data-type="month"></td><td><label for="o-support">Пакет техподдержки, 5 часов</label></td><td class="unit">в месяц</td><td class="sum">10&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-chat" data-name="Годовая поддержка в чате" data-unit="за 12 месяцев" data-price="10000" data-type="once"></td><td><label for="o-chat">Годовая поддержка в чате</label></td><td class="unit">за 12 месяцев</td><td class="sum">10&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-edu1" data-name="Дополнительное индивидуальное обучение нейросетям" data-unit="2 часа" data-price="10000" data-type="once"></td><td><label for="o-edu1">Дополнительное индивидуальное обучение нейросетям</label></td><td class="unit">2 часа</td><td class="sum">10&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-edu2" data-name="Дополнительное обучение нейросетям для команды" data-unit="2 часа" data-price="15000" data-type="once"></td><td><label for="o-edu2">Дополнительное обучение нейросетям для команды</label></td><td class="unit">2 часа</td><td class="sum">15&nbsp;000&nbsp;₽</td></tr></tbody>
+        <tbody><tr class="base"><td class="pick"><input class="cb" type="checkbox" checked disabled aria-label="Внедрение системы — включено в заказ"></td><td>Внедрение системы потокового производства SEO- и GEO-статей</td><td class="unit">единоразово</td><td class="sum">100&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-art10" data-group="articles" data-name="Статьи под ключ: 10 статей в месяц" data-short="10 статей" data-unit="в месяц" data-price="20000" data-type="month"></td><td><label for="o-art10">Статьи под ключ: 10 статей в месяц</label></td><td class="unit">в месяц</td><td class="sum">20&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-art20" data-group="articles" data-name="Статьи под ключ: 20 статей в месяц" data-short="20 статей" data-unit="в месяц" data-price="30000" data-type="month"></td><td><label for="o-art20">Статьи под ключ: 20 статей в месяц</label></td><td class="unit">в месяц</td><td class="sum">30&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-gacc" data-name="Покупка аккаунта Google и регистрация в Claude" data-unit="единоразово" data-price="5000" data-type="once"></td><td><label for="o-gacc">Покупка аккаунта Google и регистрация в Claude</label></td><td class="unit">единоразово</td><td class="sum">5&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-metrika" data-name="Подключение Яндекс Метрики" data-unit="единоразово" data-price="5000" data-type="once"></td><td><label for="o-metrika">Подключение Яндекс Метрики</label></td><td class="unit">единоразово</td><td class="sum">5&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-webmaster" data-name="Подключение Яндекс Вебмастера" data-unit="единоразово" data-price="5000" data-type="once"></td><td><label for="o-webmaster">Подключение Яндекс Вебмастера</label></td><td class="unit">единоразово</td><td class="sum">5&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-gsc" data-name="Подключение Google Search Console" data-unit="единоразово" data-price="5000" data-type="once"></td><td><label for="o-gsc">Подключение Google Search Console</label></td><td class="unit">единоразово</td><td class="sum">5&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-support" data-name="Пакет техподдержки, 5 часов" data-short="техподдержка 5 ч" data-unit="в месяц" data-price="10000" data-type="month"></td><td><label for="o-support">Пакет техподдержки, 5 часов</label></td><td class="unit">в месяц</td><td class="sum">10&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-chat" data-name="Годовая поддержка в чате" data-unit="за 12 месяцев" data-price="10000" data-type="once"></td><td><label for="o-chat">Годовая поддержка в чате</label></td><td class="unit">за 12 месяцев</td><td class="sum">10&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-edu1" data-name="Дополнительное индивидуальное обучение нейросетям" data-unit="2 часа" data-price="10000" data-type="once"></td><td><label for="o-edu1">Дополнительное индивидуальное обучение нейросетям</label></td><td class="unit">2 часа</td><td class="sum">10&nbsp;000&nbsp;₽</td></tr><tr class="opt"><td class="pick"><input class="cb" type="checkbox" id="o-edu2" data-name="Дополнительное обучение нейросетям для команды" data-unit="2 часа" data-price="15000" data-type="once"></td><td><label for="o-edu2">Дополнительное обучение нейросетям для команды</label></td><td class="unit">2 часа</td><td class="sum">15&nbsp;000&nbsp;₽</td></tr></tbody>
       </table>
     </div>
     <div class="order">
       <div class="order-sum">
         <div class="eyebrow">Итого к оплате разово</div>
         <div class="order-total"><span id="o-total-n">100&nbsp;000</span><span>₽</span></div>
-        <div class="order-monthly" id="o-monthly" hidden>и <b id="o-monthly-n"></b> ежемесячно за техподдержку</div>
+        <div class="order-monthly" id="o-monthly" hidden>и <b id="o-monthly-n"></b> ежемесячно<span id="o-monthly-what"></span></div>
         <div class="order-items" id="o-count">Только внедрение, без дополнительных услуг</div>
       </div>
       <a class="order-btn" id="o-btn" href="https://t.me/hotheads_band" target="_blank" rel="noopener">
@@ -983,27 +1328,44 @@ footer{padding:26px 0 44px;color:var(--muted);font-size:13.5px}
 </section>
 
 </main>
+
+<div class="zoom" id="zoom" role="dialog" aria-modal="true" aria-label="Скриншот в полном размере" hidden>
+  <button class="zoom-close" id="zoom-close" type="button">Закрыть ✕</button>
+  <img id="zoom-img" alt="">
+</div>
+
 <script>
 (function(){
   var BASE=100000, TG='https://t.me/hotheads_band';
   var boxes=[].slice.call(document.querySelectorAll('#order input.cb[data-price]'));
+  var picks=[].slice.call(document.querySelectorAll('[data-pick]'));
   var btn=document.getElementById('o-btn');
   var totalN=document.getElementById('o-total-n');
-  var mWrap=document.getElementById('o-monthly'), mN=document.getElementById('o-monthly-n');
+  var mWrap=document.getElementById('o-monthly'), mN=document.getElementById('o-monthly-n'), mWhat=document.getElementById('o-monthly-what');
   var cnt=document.getElementById('o-count');
   function money(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')}
   function plural(n){var a=n%10,b=n%100;if(a==1&&b!=11)return 'услуга';if(a>=2&&a<=4&&(b<10||b>=20))return 'услуги';return 'услуг'}
+  function setBox(b,on){
+    b.checked=on;
+    if(on&&b.dataset.group)boxes.forEach(function(o){if(o!==b&&o.dataset.group===b.dataset.group)o.checked=false});
+  }
   function update(){
-    var once=BASE, monthly=0, picked=[];
+    var once=BASE, monthly=0, picked=[], mList=[];
     boxes.forEach(function(b){
       var row=b.closest('tr'); row.classList.toggle('on',b.checked);
       if(!b.checked)return;
       var pr=+b.dataset.price;
-      if(b.dataset.type==='month')monthly+=pr;else once+=pr;
+      if(b.dataset.type==='month'){monthly+=pr;mList.push(b.dataset.short||b.dataset.name)}else once+=pr;
       picked.push(b);
     });
-    totalN.textContent=money(once).replace(/ /g,'\u00a0');
-    mWrap.hidden=!monthly; if(monthly)mN.textContent=money(monthly)+'\u00a0₽';
+    totalN.textContent=money(once).replace(/ /g,' ');
+    mWrap.hidden=!monthly;
+    if(monthly){mN.textContent=money(monthly)+' ₽';mWhat.textContent=': '+mList.join(', ')}
+    picks.forEach(function(p){
+      var b=document.getElementById(p.dataset.pick), on=!!(b&&b.checked);
+      p.setAttribute('aria-pressed',on?'true':'false');
+      p.textContent=on?'В заказе ✓':'Добавить в заказ';
+    });
     cnt.textContent=picked.length?('Внедрение + '+picked.length+' '+plural(picked.length)+' дополнительно'):'Только внедрение, без дополнительных услуг';
     var lines=['Здравствуйте! Хочу заказать внедрение системы потокового производства SEO- и GEO-статей — '+money(BASE)+' ₽.'];
     if(picked.length){
@@ -1014,14 +1376,38 @@ footer{padding:26px 0 44px;color:var(--muted);font-size:13.5px}
     if(monthly)lines.push('Ежемесячно: '+money(monthly)+' ₽');
     btn.href=TG+'?text='+encodeURIComponent(lines.join('\n'));
   }
-  boxes.forEach(function(b){b.addEventListener('change',update)});
+  boxes.forEach(function(b){b.addEventListener('change',function(){setBox(b,b.checked);update()})});
   [].slice.call(document.querySelectorAll('#order tr.opt')).forEach(function(r){
     r.addEventListener('click',function(e){
       if(e.target.closest('input,label'))return;
-      var b=r.querySelector('input'); b.checked=!b.checked; update();
+      var b=r.querySelector('input'); setBox(b,!b.checked); update();
+    });
+  });
+  picks.forEach(function(p){
+    p.addEventListener('click',function(){
+      var b=document.getElementById(p.dataset.pick); if(!b)return;
+      setBox(b,!b.checked); update();
     });
   });
   update();
+})();
+
+(function(){
+  var z=document.getElementById('zoom'), zi=document.getElementById('zoom-img'), zc=document.getElementById('zoom-close'), from=null;
+  if(!z)return;
+  function open(img,trigger){
+    zi.src=img.currentSrc||img.src; zi.alt=img.alt; zi.width=img.naturalWidth||+img.getAttribute('width');
+    z.hidden=false; document.documentElement.style.overflow='hidden'; from=trigger; zc.focus();
+  }
+  function close(){
+    z.hidden=true; document.documentElement.style.overflow=''; zi.removeAttribute('src');
+    if(from)from.focus();
+  }
+  [].slice.call(document.querySelectorAll('.shot-img')).forEach(function(b){
+    b.addEventListener('click',function(){open(b.querySelector('img'),b)});
+  });
+  z.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!z.hidden)close()});
 })();
 </script>
 
