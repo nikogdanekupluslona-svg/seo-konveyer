@@ -113,6 +113,7 @@ h3{font-size:19px;font-weight:600;line-height:1.3}
 .opt .eyebrow{font-size:11px;color:var(--accent)}
 .opt strong{font-size:16px;font-weight:600}
 .opt p{font-size:14.5px;color:var(--muted);line-height:1.5}
+.opt .req-link{margin-top:8px}
 ul.items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 ul.items li{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:15px;line-height:1.5}
 ul.items li::before{content:"";width:9px;height:9px;margin-top:8px;border-radius:2px;background:var(--accent)}
@@ -216,7 +217,7 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
     <a class="back" href="../">← Коммерческое предложение</a>
     <div class="eyebrow">Внедрение SEO/GEO-системы · неделя 1 из 2</div>
     <h1>Неделя настройки:<br><em>что делаем мы и что нужно от вас</em></h1>
-    <p class="lede">Оплата получена, внедрение началось. Эту неделю мы настраиваем систему под ваш сайт без созвонов. Параллельно у вас три задачи: дать доступ к админке сайта, пройти вводное обучение и выбрать, на чём будет работать система, — на Claude или на Cursor.</p>
+    <p class="lede">Оплата получена, внедрение началось. Эту неделю мы настраиваем систему под ваш сайт без созвонов. Параллельно у вас три задачи: дать доступ к админке сайта, выбрать Claude или Cursor и пройти вводное обучение для выбранного варианта.</p>
   </div>
 </header>
 
@@ -247,7 +248,7 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
     <li><div><strong>Настраиваем регламент под ваш бренд</strong><p>Домен, тон, обязательные блоки, термины и темы, которых нужно избегать. Так статьи с первого дня звучат как ваш сайт.</p></div></li>
     <li><div><strong>Собираем шаблон вёрстки</strong><p>Цвета, шрифты и блоки статьи под стиль вашего сайта, с учётом лимита Zero Block в Tilda.</p></div></li>
     <li><div><strong>Снимаем первую семантику и черновой контент-план</strong><p>Собираем запросы по вашей нише, группируем в кластеры и намечаем первые темы. Разберём их вместе на сессии 1.</p></div></li>
-    <li><div><strong>Готовим систему под выбранный вариант</strong><p>Адаптируем инструкцию и шпаргалку команд под Claude или под Cursor — в зависимости от вашего выбора.</p><span class="dep">Нужен ваш выбор → задача 03</span></div></li>
+    <li><div><strong>Готовим систему под выбранный вариант</strong><p>Адаптируем инструкцию и шпаргалку команд под Claude или под Cursor — в зависимости от вашего выбора.</p><span class="dep">Нужен ваш выбор → задача 02</span></div></li>
   </ul>
 </section>
 
@@ -255,7 +256,7 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
   <div class="sec-head">
     <div class="eyebrow">Ваша часть</div>
     <h2>Что нужно от вас</h2>
-    <p>Три задачи. Без первой мы не сможем подключить публикацию, без второй и третьей не получится провести сессии на следующей неделе.</p>
+    <p>Три задачи. Без первой мы не сможем подключить публикацию. Без второй не подготовим систему под ваш вариант, без третьей сессии на следующей неделе пройдут медленнее.</p>
   </div>
   <div class="reqs">
 
@@ -283,21 +284,34 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
     <div class="req">
       <div class="req-n">02</div>
       <div class="req-body">
-        <div class="req-top"><span class="req-tag">Обучение</span><span class="due">До конца недели</span></div>
-        <h3>Вводное обучение по нейросетям и Claude</h3>
-        <p>Пока мы настраиваем систему, сотрудник, который будет с ней работать, проходит вводное обучение. В нём разобраны основы: как ставить задачи нейросети, вести диалог и работать с файлами. <b>На сессиях недели 2 мы будем опираться на эту базу</b>, поэтому без обучения созвоны пройдут медленнее.</p>
-        <a class="req-link" href="https://youtu.be/5R9cEQgPfvo?si=ZRjRoCCutrKHrBkj" target="_blank" rel="noopener">Смотреть обучение на YouTube ↗</a>
-        <p>Если что-то покажется сложным, напишите в чат: пришлём дополнительные материалы. Если с системой будут работать несколько человек, обучение нужно пройти каждому.</p>
+        <div class="req-top"><span class="req-tag">Выбор и подписка</span><span class="due">До первой сессии</span></div>
+        <h3>Выбрать Claude или Cursor и завести аккаунт</h3>
+        <p>Система работает с нейросетью Claude, но подключить её можно двумя путями: через приложение Claude или через программу Cursor. Сравнение и пошаговые инструкции — ниже. <b>Напишите нам о выборе</b>, как только определитесь: под него мы подготовим инструкцию и шпаргалку.</p>
+        <a class="req-link" href="#choose">Сравнить варианты ↓</a>
       </div>
     </div>
 
     <div class="req">
       <div class="req-n">03</div>
       <div class="req-body">
-        <div class="req-top"><span class="req-tag">Выбор и подписка</span><span class="due">До первой сессии</span></div>
-        <h3>Выбрать Claude или Cursor и завести аккаунт</h3>
-        <p>Система работает с нейросетью Claude, но подключить её можно двумя путями: через приложение Claude или через программу Cursor. Сравнение и пошаговые инструкции — ниже. <b>Напишите нам о выборе</b>, как только определитесь: под него мы подготовим инструкцию и шпаргалку.</p>
-        <a class="req-link" href="#choose">Сравнить варианты ↓</a>
+        <div class="req-top"><span class="req-tag">Обучение</span><span class="due">До конца недели</span></div>
+        <h3>Вводное обучение — по выбранной системе</h3>
+        <p>Пока мы настраиваем систему, сотрудник, который будет с ней работать, проходит вводное обучение. <b>На сессиях недели 2 мы будем опираться на эту базу</b>, поэтому без обучения созвоны пройдут медленнее. Смотрите ролик для того варианта, который выбрали в задаче 02.</p>
+        <div class="opts">
+          <div class="opt">
+            <div class="eyebrow">Если выбрали Claude</div>
+            <strong>Вводное обучение по нейросетям и Claude</strong>
+            <p>В нём разобраны основы: как ставить задачи нейросети, вести диалог и работать с файлами.</p>
+            <a class="req-link" href="https://youtu.be/5R9cEQgPfvo?si=ZRjRoCCutrKHrBkj" target="_blank" rel="noopener">Смотреть обучение на YouTube ↗</a>
+          </div>
+          <div class="opt">
+            <div class="eyebrow">Если выбрали Cursor</div>
+            <strong>Вводное обучение по Cursor</strong>
+            <p>Отдельный ролик для тех, кто будет работать в Cursor, а не в приложении Claude.</p>
+            <a class="req-link" href="https://www.youtube.com/watch?v=rTw4fzHgfWs" target="_blank" rel="noopener">Смотреть обучение на YouTube ↗</a>
+          </div>
+        </div>
+        <p>Если что-то покажется сложным, напишите в чат: пришлём дополнительные материалы. Если с системой будут работать несколько человек, обучение нужно пройти каждому.</p>
       </div>
     </div>
 
@@ -306,7 +320,7 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
 
 <section id="choose">
   <div class="sec-head">
-    <div class="eyebrow">Задача 03 · выбор</div>
+    <div class="eyebrow">Задача 02 · выбор</div>
     <h2>Claude или Cursor: на чём будет работать система</h2>
     <p>Оба варианта стоят около $20 в месяц и запускают те же файлы системы. Разница в качестве текстов, надёжности доступа и лимитах.</p>
   </div>
@@ -393,7 +407,7 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
 
 <section id="card">
   <div class="sec-head">
-    <div class="eyebrow">Задача 03 · оплата</div>
+    <div class="eyebrow">Задача 02 · оплата</div>
     <h2>Зарубежная карта для оплаты подписки</h2>
     <p>И Claude, и Cursor принимают только зарубежные карты. Если такой карты нет, её можно выпустить в сервисе «Плати по миру».</p>
   </div>
@@ -414,7 +428,7 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
 
 <section id="setup">
   <div class="sec-head">
-    <div class="eyebrow">Задача 03 · инструкции</div>
+    <div class="eyebrow">Задача 02 · инструкции</div>
     <h2>Как завести аккаунт</h2>
     <p>Выполните инструкцию только для выбранного варианта. Систему к аккаунту подключим вместе на сессии 1, сейчас нужны только аккаунт, подписка и установленная программа.</p>
   </div>
