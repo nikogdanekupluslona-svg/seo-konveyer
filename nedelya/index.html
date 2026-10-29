@@ -164,6 +164,7 @@ td .w{color:var(--ok);font-weight:600}
 .steps strong{font-size:16px;font-weight:600}
 .steps p{font-size:14.5px;color:var(--muted);line-height:1.5}
 .steps .req-link{margin-top:auto;font-size:13.5px;padding:6px 12px}
+.steps.stack{grid-template-columns:1fr}
 .path-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
 .path-h h3{font-family:"Unbounded","Golos Text",sans-serif;font-weight:600;font-size:20px;letter-spacing:-.01em}
 .path + .path{margin-top:48px;padding-top:40px;border-top:1px dashed var(--line-strong)}
@@ -243,7 +244,7 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
     <p>Задачи идут не строго по дням: часть из них зависит от доступов, поэтому порядок может меняться. Мы напишем в чат, когда закончим каждый крупный блок.</p>
   </div>
   <ul class="tasks">
-    <li><div><strong>Подключаем Яндекс Wordstat</strong><p>Оформляем ключ доступа через Yandex Cloud и проверяем, что частотность по вашей нише снимается без ошибок.</p></div></li>
+    <li><div><strong>Подключаем Яндекс Wordstat</strong><p>Подключаем ваш API-ключ и проверяем, что частотность по вашей нише снимается без ошибок.</p><span class="dep">Нужен токен Wordstat → ко второй сессии</span></div></li>
     <li><div><strong>Подключаем публикацию в ваш блог</strong><p>Настраиваем выкладку статей в «Поток» Tilda и проверяем её тестовым черновиком. Черновик не виден посетителям сайта.</p><span class="dep">Нужен доступ к админке → задача 01</span></div></li>
     <li><div><strong>Настраиваем регламент под ваш бренд</strong><p>Домен, тон, обязательные блоки, термины и темы, которых нужно избегать. Так статьи с первого дня звучат как ваш сайт.</p></div></li>
     <li><div><strong>Собираем шаблон вёрстки</strong><p>Цвета, шрифты и блоки статьи под стиль вашего сайта, с учётом лимита Zero Block в Tilda.</p></div></li>
@@ -291,7 +292,7 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
       </div>
     </div>
 
-    <div class="req">
+    <div class="req" id="learn">
       <div class="req-n">03</div>
       <div class="req-body">
         <div class="req-top"><span class="req-tag">Обучение</span><span class="due">До конца недели</span></div>
@@ -499,6 +500,75 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
     <div class="tl-row"><div class="tl-day">Сессия 2</div><div class="tl-body"><strong>Статья целиком</strong><p>Проходим все этапы на вашей реальной теме: от кластера до черновика в Tilda.</p></div></div>
     <div class="tl-row"><div class="tl-day">Сессия 3</div><div class="tl-body"><strong>Эксплуатация и сдача</strong><p>Обновление старых статей, перелинковка, разметка, типовые сбои. Передаём файлы, инструкцию и записи, дальше — 30 дней поддержки в чате.</p></div></div>
   </div>
+</section>
+
+<section id="calls">
+  <div class="sec-head">
+    <div class="eyebrow">Перед созвонами</div>
+    <h2>Что подготовить к звонкам</h2>
+    <p>Два списка. Если к началу звонка пункта нет, эту часть сессии придётся переносить.</p>
+  </div>
+
+  <div class="path">
+    <div class="path-h"><h3>К первому звонку</h3><span class="eyebrow">сессия 1</span></div>
+    <ol class="steps">
+      <li>
+        <strong>Установлен Claude или Cursor</strong>
+        <p>На компьютере, с которого будете работать, стоит выбранная программа и выполнен вход в аккаунт.</p>
+      </li>
+      <li>
+        <strong>Пройдено вводное обучение</strong>
+        <p>Ролик для вашего варианта — в <a href="#learn">задаче 03</a>. К звонку его нужно досмотреть.</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="path">
+    <div class="path-h"><h3>Ко второму звонку</h3><span class="eyebrow">сессия 2</span></div>
+    <ol class="steps">
+      <li>
+        <strong>Получен токен Wordstat</strong>
+        <p>API-ключ и идентификатор каталога Yandex Cloud. Как их получить — в инструкции ниже. Пришлите оба значения в личные сообщения, не в общий чат.</p>
+      </li>
+      <li>
+        <strong>Папка системы скачана и распакована</strong>
+        <p>Скачайте на компьютер папку, которую мы пришлём в чат, и распакуйте её. К звонку папка уже должна лежать на диске, не внутри архива.</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="sub-h" id="wordstat">Как получить токен Wordstat</div>
+  <p style="color:var(--muted);max-width:680px;margin-bottom:18px">Системе нужны два значения из Yandex Cloud: секретный API-ключ и идентификатор каталога. Зарубежная карта и VPN не нужны — это российский сервис, подойдёт карта российского банка.</p>
+  <ol class="steps stack">
+    <li>
+      <strong>Войти в Yandex AI Studio</strong>
+      <p>Откройте AI Studio под своим Яндекс ID. Если аккаунта Яндекса ещё нет, зарегистрируйтесь в Яндексе и вернитесь на эту страницу.</p>
+      <a class="req-link" href="https://aistudio.yandex.ru/" target="_blank" rel="noopener">Открыть Yandex AI Studio ↗</a>
+    </li>
+    <li>
+      <strong>Создать организацию</strong>
+      <p>При первом входе укажите название организации и облака и нажмите «Открыть AI Studio». Каталог с именем default создастся сам — отдельно его заводить не нужно.</p>
+    </li>
+    <li>
+      <strong>Привязать платёжный аккаунт</strong>
+      <p>Справа вверху нажмите «Привязать платёжный аккаунт» и добавьте карту. Без привязанной оплаты Wordstat не отвечает, даже если запросов мало. При первой привязке Яндекс начисляет стартовый грант. Статус аккаунта должен стать ACTIVE или TRIAL_ACTIVE. Отдельно за частотность обычно платить не приходится: бесплатных лимитов хватает на работу.</p>
+    </li>
+    <li>
+      <strong>Создать API-ключ</strong>
+      <p>Справа вверху нажмите «Создать API-ключ». В описании можно написать Wordstat. Срок выберите с запасом, чтобы ключ не истёк в середине работы. Нажмите «Создать». Секретный ключ показывается один раз: скопируйте его сразу. Для подключения нужна именно секретная часть, а не идентификатор ключа.</p>
+      <a class="req-link" href="https://aistudio.yandex.ru/ru/docs/search-api/quickstart/" target="_blank" rel="noopener">Официальная инструкция Яндекса ↗</a>
+    </li>
+    <li>
+      <strong>Скопировать идентификатор каталога</strong>
+      <p>Откройте консоль Yandex Cloud, на панели сверху выберите каталог default. Идентификатор написан под именем каталога: наведите на него и скопируйте. Это отдельная строка, не сам API-ключ.</p>
+      <a class="req-link" href="https://console.yandex.cloud/" target="_blank" rel="noopener">Открыть консоль Yandex Cloud ↗</a>
+    </li>
+    <li>
+      <strong>Прислать оба значения нам</strong>
+      <p>В личные сообщения, не в общий чат: секретный API-ключ и идентификатор каталога. На втором звонке подключим их и проверим, что частотность по вашей нише снимается.</p>
+    </li>
+  </ol>
+  <div class="callout" style="margin-top:18px"><b>Ключ показывается один раз.</b> Если закрыли окно, не скопировав секрет, создайте новый ключ той же кнопкой. Старый, если он мог попасть в общий чат, удалите в разделе «Доступ».</div>
 </section>
 
 </main>
