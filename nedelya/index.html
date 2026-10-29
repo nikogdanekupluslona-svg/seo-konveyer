@@ -509,7 +509,7 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
   <div class="sec-head">
     <div class="eyebrow">Перед созвонами</div>
     <h2>Что подготовить к звонкам</h2>
-    <p>Два списка. Если к началу звонка пункта нет, эту часть сессии придётся переносить.</p>
+    <p>Три списка. Если к началу звонка пункта нет, эту часть сессии придётся переносить.</p>
   </div>
 
   <div class="path">
@@ -536,6 +536,20 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
       <li>
         <strong>Папка системы скачана и распакована</strong>
         <p>Скачайте на компьютер папку, которую мы пришлём в чат, и распакуйте её. К звонку папка уже должна лежать на диске, не внутри архива.</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="path">
+    <div class="path-h"><h3>К третьему звонку</h3><span class="eyebrow">сессия 3</span></div>
+    <ol class="steps">
+      <li>
+        <strong>Получен токен Яндекса для Метрики и Вебмастера</strong>
+        <p>Один OAuth-токен с доступами к обоим сервисам. Номер счётчика и идентификатор сайта отдельно не нужны. Как получить токен — в <a href="#yandex-oauth">инструкции ниже</a>. Пришлите его в личные сообщения, не в общий чат.</p>
+      </li>
+      <li>
+        <strong>По желанию: ключ Google Search Console</strong>
+        <p>Если сайт есть в Search Console, пришлите JSON-файл ключа и адрес ресурса так, как он записан в кабинете. Этого достаточно, чтобы подключить кабинет. Если Search Console нет, пункт можно пропустить. <a href="#gsc">Как получить ключ</a>.</p>
       </li>
     </ol>
   </div>
@@ -592,6 +606,95 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
     </li>
   </ol>
   <div class="callout" style="margin-top:18px"><b>Ключ показывается один раз.</b> Если закрыли окно, не скопировав секрет, создайте новый ключ той же кнопкой. Старый, если он мог попасть в общий чат, удалите в разделе «Доступ».</div>
+
+  <div class="sub-h" id="yandex-oauth">Как получить токен Метрики и Вебмастера</div>
+  <p style="color:var(--muted);max-width:680px;margin-bottom:18px">В настройки системы попадает одна строка — OAuth-токен. Он должен быть выдан с аккаунта, которому видны счётчик Метрики и сайт в Вебмастере, и в приложении должны быть отмечены оба сервиса. Client secret, номер счётчика и идентификатор сайта присылать не нужно.</p>
+  <ol class="steps stack">
+    <li>
+      <strong>Войти в нужный аккаунт Яндекса</strong>
+      <p>Откройте Яндекс ID и войдите в аккаунт, у которого есть доступ к счётчику в Метрике и к сайту в Вебмастере. Токен получит тот, кто вошёл на последнем шаге, а не тот, на кого оформлено приложение.</p>
+      <a class="req-link" href="https://passport.yandex.ru/" target="_blank" rel="noopener">Открыть Яндекс ID ↗</a>
+      <figure class="step-shot">
+        <img src="img/ya-1-login.png" width="896" height="1348" alt="Экран входа Яндекс ID: поле телефона и кнопка «Ещё»">
+        <figcaption>Вход в Яндекс ID. Нужен аккаунт владельца счётчика и сайта, не отдельная почта «для разработки».</figcaption>
+      </figure>
+    </li>
+    <li>
+      <strong>Создать приложение для доступа к API</strong>
+      <p>Откройте создание приложения и, если появится выбор, нажмите «Для доступа к API или отладки». Название можно поставить SEO, в почте — свою. Redirect URI у такого приложения фиксированный, его не меняют: <span style="font-family:'JetBrains Mono',monospace;font-size:13px">https://oauth.yandex.ru/verification_code</span>.</p>
+      <a class="req-link" href="https://oauth.yandex.ru/client/new/" target="_blank" rel="noopener">Создать приложение в Яндекс OAuth ↗</a>
+      <figure class="step-shot">
+        <img src="img/ya-3-webmaster.png" width="896" height="1348" alt="Документация Вебмастера: redirect URI и доступы webmaster:hostinfo и webmaster:verify">
+        <figcaption>Какие поля заполнять. Из доступов Вебмастера нужны ровно webmaster:hostinfo и webmaster:verify. Цифры на скриншоте — нумерация документации Яндекса.</figcaption>
+      </figure>
+    </li>
+    <li>
+      <strong>Добавить доступы Метрики и Вебмастера</strong>
+      <p>В поле доступов добавьте три названия, каждое отдельно: <span style="font-family:'JetBrains Mono',monospace;font-size:13px">metrika:read</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:13px">webmaster:hostinfo</span>, <span style="font-family:'JetBrains Mono',monospace;font-size:13px">webmaster:verify</span>. Доступы на запись, расходы и офлайн-данные не добавляйте — для подключения они не нужны. Если счётчик заведён на логин организации, добавьте ещё <span style="font-family:'JetBrains Mono',monospace;font-size:13px">passport:business</span>.</p>
+      <figure class="step-shot">
+        <img src="img/ya-2-metrika.png" width="896" height="1348" alt="Список доступов API Метрики: metrika:read и остальные права">
+        <figcaption>Для Метрики достаточно metrika:read — чтение статистики и списка счётчиков. Остальные пункты на скриншоте не отмечайте.</figcaption>
+      </figure>
+    </li>
+    <li>
+      <strong>Скопировать ClientID</strong>
+      <p>Нажмите «Создать приложение». На странице приложения скопируйте ClientID — идентификатор, не секрет. Client secret в настройки системы не входит, его не присылайте и никому не показывайте.</p>
+      <figure class="step-shot">
+        <img src="img/ya-4-clientid.png" width="585" height="748" alt="Страница приложения Яндекс OAuth: поле ClientID и кнопка копирования">
+        <figcaption>Копируется поле ClientID. На примере из документации Яндекса в правах указан другой сервис — у вас в «Запрашиваемые права» должны быть Метрика и Вебмастер. Client secret не копируйте.</figcaption>
+      </figure>
+    </li>
+    <li>
+      <strong>Выдать токен и скопировать access_token</strong>
+      <p>Подставьте ClientID в ссылку и откройте её в том же браузере, где вы вошли в нужный аккаунт: <span style="font-family:'JetBrains Mono',monospace;font-size:13px">https://oauth.yandex.ru/authorize?response_type=token&amp;client_id=ВАШ_CLIENT_ID</span>. Нажмите «Разрешить». На открывшейся странице в адресе после символа # будет <span style="font-family:'JetBrains Mono',monospace;font-size:13px">access_token=</span>. Скопируйте только значение токена — длинную строку до <span style="font-family:'JetBrains Mono',monospace;font-size:13px">&amp;expires_in</span>, без названия параметра.</p>
+      <figure class="step-shot">
+        <img src="img/ya-5-token.png" width="896" height="1348" alt="Документация Яндекса: адрес страницы с access_token после символа решётки">
+        <figcaption>Нужна строка из параметра access_token. Яндекс не сохраняет её в кабинете: если закрыли страницу, откройте ссылку с ClientID ещё раз.</figcaption>
+      </figure>
+    </li>
+    <li>
+      <strong>Прислать токен нам</strong>
+      <p>В личные сообщения, не в общий чат: одну строку токена. На третьем звонке впишем её в файл настроек и проверим, что Метрика и Вебмастер отвечают. Токен Вебмастера действует около полугода; если сменить пароль Яндекса, его нужно выпустить заново той же ссылкой.</p>
+    </li>
+  </ol>
+
+  <div class="sub-h" id="gsc">По желанию: ключ Google Search Console</div>
+  <p style="color:var(--muted);max-width:680px;margin-bottom:18px">Если сайта в Search Console нет, этот блок можно пропустить. Если есть, в файл настроек попадают два значения: скачанный JSON-файл ключа и адрес ресурса. Отдельный API-ключ Google для этого не нужен. Добавить пользователя может только владелец ресурса.</p>
+  <ol class="steps stack">
+    <li>
+      <strong>Войти в Google Cloud</strong>
+      <p>Откройте консоль под аккаунтом Google, который владеет сайтом в Search Console. Если аккаунта в Cloud ещё нет, его можно создать на этом же экране — карта для этого шага не нужна.</p>
+      <a class="req-link" href="https://console.cloud.google.com/" target="_blank" rel="noopener">Открыть Google Cloud ↗</a>
+      <figure class="step-shot">
+        <img src="img/gsc-1-login.png" width="896" height="1348" alt="Экран входа Google с подписью «Переход в Google Cloud Platform»">
+        <figcaption>Вход в Google Cloud. Нужен тот же Google-аккаунт, которым вы входите в Search Console.</figcaption>
+      </figure>
+    </li>
+    <li>
+      <strong>Создать проект и включить Search Console API</strong>
+      <p>Вверху выберите проект или создайте новый, например SEO. Затем откройте «APIs &amp; Services» → «Library», найдите Google Search Console API и нажмите Enable. Отдельный ключ на этом шаге копировать не нужно.</p>
+      <a class="req-link" href="https://console.cloud.google.com/apis/library/searchconsole.googleapis.com" target="_blank" rel="noopener">Открыть Search Console API ↗</a>
+    </li>
+    <li>
+      <strong>Скачать JSON-ключ сервисного аккаунта</strong>
+      <p>Откройте «IAM &amp; Admin» → «Service accounts» → «Create service account». Имя можно поставить seo. Роли пропускаются. Откройте созданный аккаунт, вкладка «Keys» → «Add key» → «Create new key» → JSON → «Create». Браузер скачает файл. Это и есть ключ для файла настроек. Не выкладывайте его в общий чат.</p>
+      <a class="req-link" href="https://cloud.google.com/iam/docs/keys-create-delete" target="_blank" rel="noopener">Как создать ключ в документации Google ↗</a>
+    </li>
+    <li>
+      <strong>Добавить почту ключа в Search Console</strong>
+      <p>Откройте скачанный файл и найдите поле <span style="font-family:'JetBrains Mono',monospace;font-size:13px">client_email</span>. Адрес заканчивается на <span style="font-family:'JetBrains Mono',monospace;font-size:13px">iam.gserviceaccount.com</span>. В Search Console откройте свой сайт, затем «Настройки» → «Пользователи и разрешения» → «Добавить пользователя». Вставьте эту почту и выберите полный доступ. Если кабинет предлагает только статус владельца — выберите его.</p>
+      <a class="req-link" href="https://search.google.com/search-console" target="_blank" rel="noopener">Открыть Search Console ↗</a>
+      <figure class="step-shot">
+        <img src="img/gsc-2-user.png" width="896" height="1348" alt="Справка Search Console: Настройки, Пользователи и разрешения, Добавить пользователя">
+        <figcaption>Куда вставить почту из client_email. Раздел виден только владельцу ресурса.</figcaption>
+      </figure>
+    </li>
+    <li>
+      <strong>Прислать файл и адрес ресурса</strong>
+      <p>В личные сообщения: JSON-файл и адрес ресурса ровно так, как он записан в Search Console. Для всего домена это строка вида <span style="font-family:'JetBrains Mono',monospace;font-size:13px">sc-domain:example.com</span>, для сайта с префиксом — <span style="font-family:'JetBrains Mono',monospace;font-size:13px">https://example.com/</span> со слэшем в конце. Содержимое файла в общий чат не вставляйте.</p>
+    </li>
+  </ol>
+  <div class="callout" style="margin-top:18px"><b>Если Search Console пишет, что почта не найдена,</b> подождите пару часов после создания сервисного аккаунта и добавьте её ещё раз. Новый адрес Google иногда появляется в поиске пользователей не сразу.</div>
 </section>
 
 </main>
