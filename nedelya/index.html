@@ -165,6 +165,9 @@ td .w{color:var(--ok);font-weight:600}
 .steps p{font-size:14.5px;color:var(--muted);line-height:1.5}
 .steps .req-link{margin-top:auto;font-size:13.5px;padding:6px 12px}
 .steps.stack{grid-template-columns:1fr}
+.step-shot{margin:4px 0 0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
+.step-shot img{display:block;width:100%;height:auto}
+.step-shot figcaption{padding:8px 12px 10px;font-size:13px;color:var(--muted);line-height:1.4}
 .path-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
 .path-h h3{font-family:"Unbounded","Golos Text",sans-serif;font-weight:600;font-size:20px;letter-spacing:-.01em}
 .path + .path{margin-top:48px;padding-top:40px;border-top:1px dashed var(--line-strong)}
@@ -542,26 +545,46 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
   <ol class="steps stack">
     <li>
       <strong>Войти в Yandex AI Studio</strong>
-      <p>Откройте AI Studio под своим Яндекс ID. Если аккаунта Яндекса ещё нет, зарегистрируйтесь в Яндексе и вернитесь на эту страницу.</p>
+      <p>Откройте AI Studio под своим Яндекс ID. Если аккаунта Яндекса ещё нет, зарегистрируйтесь в Яндексе и вернитесь на эту страницу. На экране входа нажмите «Войти с помощью Yandex ID».</p>
       <a class="req-link" href="https://aistudio.yandex.ru/" target="_blank" rel="noopener">Открыть Yandex AI Studio ↗</a>
+      <figure class="step-shot">
+        <img src="img/wordstat-1-login.png" width="900" height="720" alt="Окно входа Yandex Cloud: кнопка «Войти с помощью Yandex ID»">
+        <figcaption>Экран входа. Нужна синяя кнопка «Войти с помощью Yandex ID».</figcaption>
+      </figure>
     </li>
     <li>
       <strong>Создать организацию</strong>
-      <p>При первом входе укажите название организации и облака и нажмите «Открыть AI Studio». Каталог с именем default создастся сам — отдельно его заводить не нужно.</p>
+      <p>При первом входе укажите название организации и облака и нажмите «Открыть AI Studio». Каталог с именем default создастся сам — отдельно его заводить не нужно. Если вы уже внутри консоли, облако создаётся из меню организации: кнопка «Создать облако».</p>
+      <figure class="step-shot">
+        <img src="img/wordstat-2-cloud.png" width="1440" height="900" alt="Меню организации в консоли Yandex Cloud, пункт «Создать облако»">
+        <figcaption>Меню организации в консоли: пункт «Создать облако». Цифры на скриншоте — пометки документации Яндекса.</figcaption>
+      </figure>
     </li>
     <li>
       <strong>Привязать платёжный аккаунт</strong>
       <p>Справа вверху нажмите «Привязать платёжный аккаунт» и добавьте карту. Без привязанной оплаты Wordstat не отвечает, даже если запросов мало. При первой привязке Яндекс начисляет стартовый грант. Статус аккаунта должен стать ACTIVE или TRIAL_ACTIVE. Отдельно за частотность обычно платить не приходится: бесплатных лимитов хватает на работу.</p>
+      <figure class="step-shot">
+        <img src="img/wordstat-3-billing.png" width="1440" height="900" alt="Страница платёжного аккаунта Yandex Cloud с кнопкой «Привязать карту»">
+        <figcaption>Страница платёжного аккаунта, кнопка «Привязать карту». Цифры на скриншоте — пометки документации Яндекса.</figcaption>
+      </figure>
     </li>
     <li>
       <strong>Создать API-ключ</strong>
       <p>Справа вверху нажмите «Создать API-ключ». В описании можно написать Wordstat. Срок выберите с запасом, чтобы ключ не истёк в середине работы. Нажмите «Создать». Секретный ключ показывается один раз: скопируйте его сразу. Для подключения нужна именно секретная часть, а не идентификатор ключа.</p>
-      <a class="req-link" href="https://aistudio.yandex.ru/ru/docs/search-api/quickstart/" target="_blank" rel="noopener">Официальная инструкция Яндекса ↗</a>
+      <a class="req-link" href="https://aistudio.yandex.ru/ru/docs/search-api/quickstart/#step-3" target="_blank" rel="noopener">Официальная инструкция Яндекса ↗</a>
     </li>
     <li>
       <strong>Скопировать идентификатор каталога</strong>
-      <p>Откройте консоль Yandex Cloud, на панели сверху выберите каталог default. Идентификатор написан под именем каталога: наведите на него и скопируйте. Это отдельная строка, не сам API-ключ.</p>
+      <p>Откройте консоль Yandex Cloud, на панели сверху выберите каталог default. Идентификатор написан под именем каталога: наведите на него и скопируйте. Это отдельная строка, не сам API-ключ. В AI Studio тот же идентификатор копируется кнопкой ID рядом с названием каталога.</p>
       <a class="req-link" href="https://console.yandex.cloud/" target="_blank" rel="noopener">Открыть консоль Yandex Cloud ↗</a>
+      <figure class="step-shot">
+        <img src="img/wordstat-5-folder.png" width="1440" height="810" alt="Дашборд консоли: идентификатор каталога под его именем и значок копирования">
+        <figcaption>В консоли идентификатор — строка под именем каталога, значок рядом её копирует. Цифры на скриншоте — пометки документации Яндекса.</figcaption>
+      </figure>
+      <figure class="step-shot">
+        <img src="img/wordstat-5-aistudio.png" width="1265" height="78" alt="Верхняя панель AI Studio: кнопка ID рядом с названием каталога">
+        <figcaption>В AI Studio тот же идентификатор копируется кнопкой ID рядом с названием каталога.</figcaption>
+      </figure>
     </li>
     <li>
       <strong>Прислать оба значения нам</strong>
