@@ -609,6 +609,7 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
 
   <div class="sub-h" id="yandex-oauth">Как получить токен Метрики и Вебмастера</div>
   <p style="color:var(--muted);max-width:680px;margin-bottom:18px">В настройки системы попадает одна строка — OAuth-токен. Он должен быть выдан с аккаунта, которому видны счётчик Метрики и сайт в Вебмастере, и в приложении должны быть отмечены оба сервиса. Client secret, номер счётчика и идентификатор сайта присылать не нужно.</p>
+  <div class="callout" style="margin-bottom:18px"><b>Адрес oauth.yandex.ru/verification_code открывать не нужно.</b> Сам по себе он пустой. Это не шаг инструкции, а служебный адрес, который Яндекс подставляет в приложение сам. Переходить нужно только по ссылке «Создать приложение», а потом — по ссылке с вашим ClientID.</div>
   <ol class="steps stack">
     <li>
       <strong>Войти в нужный аккаунт Яндекса</strong>
@@ -621,11 +622,11 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
     </li>
     <li>
       <strong>Создать приложение для доступа к API</strong>
-      <p>Откройте создание приложения и, если появится выбор, нажмите «Для доступа к API или отладки». Название можно поставить SEO, в почте — свою. Redirect URI у такого приложения фиксированный, его не меняют: <span style="font-family:'JetBrains Mono',monospace;font-size:13px">https://oauth.yandex.ru/verification_code</span>.</p>
+      <p>Откройте создание приложения и, если появится выбор, нажмите «Для доступа к API или отладки». Название можно поставить SEO, в почте — свою. Поле Redirect URI не заполняйте и не меняйте: Яндекс подставляет его сам.</p>
       <a class="req-link" href="https://oauth.yandex.ru/client/new/" target="_blank" rel="noopener">Создать приложение в Яндекс OAuth ↗</a>
       <figure class="step-shot">
-        <img src="img/ya-3-webmaster.png" width="896" height="1348" alt="Документация Вебмастера: redirect URI и доступы webmaster:hostinfo и webmaster:verify">
-        <figcaption>Какие поля заполнять. Из доступов Вебмастера нужны ровно webmaster:hostinfo и webmaster:verify. Цифры на скриншоте — нумерация документации Яндекса.</figcaption>
+        <img src="img/ya-3-webmaster.png" width="896" height="1348" alt="Документация Вебмастера: поля приложения и доступы webmaster:hostinfo и webmaster:verify">
+        <figcaption>Заполняются название, почта и доступы. Адрес verification_code на скриншоте открывать не нужно: сам по себе он ведёт на пустую страницу. Из доступов Вебмастера нужны webmaster:hostinfo и webmaster:verify.</figcaption>
       </figure>
     </li>
     <li>
@@ -646,7 +647,7 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
     </li>
     <li>
       <strong>Выдать токен и скопировать access_token</strong>
-      <p>Подставьте ClientID в ссылку и откройте её в том же браузере, где вы вошли в нужный аккаунт: <span style="font-family:'JetBrains Mono',monospace;font-size:13px">https://oauth.yandex.ru/authorize?response_type=token&amp;client_id=ВАШ_CLIENT_ID</span>. Нажмите «Разрешить». На открывшейся странице в адресе после символа # будет <span style="font-family:'JetBrains Mono',monospace;font-size:13px">access_token=</span>. Скопируйте только значение токена — длинную строку до <span style="font-family:'JetBrains Mono',monospace;font-size:13px">&amp;expires_in</span>, без названия параметра.</p>
+      <p>Подставьте ClientID вместо <span style="font-family:'JetBrains Mono',monospace;font-size:13px">ВАШ_CLIENT_ID</span> и откройте получившуюся ссылку в том же браузере, где вы вошли в нужный аккаунт: <span style="font-family:'JetBrains Mono',monospace;font-size:13px">https://oauth.yandex.ru/authorize?response_type=token&amp;client_id=ВАШ_CLIENT_ID</span>. Нажмите «Разрешить». Яндекс сам откроет страницу verification_code — раньше её открывать не нужно, без токена она пустая. В адресе после символа # будет <span style="font-family:'JetBrains Mono',monospace;font-size:13px">access_token=</span>. Скопируйте только значение токена — длинную строку до <span style="font-family:'JetBrains Mono',monospace;font-size:13px">&amp;expires_in</span>, без названия параметра.</p>
       <figure class="step-shot">
         <img src="img/ya-5-token.png" width="896" height="1348" alt="Документация Яндекса: адрес страницы с access_token после символа решётки">
         <figcaption>Нужна строка из параметра access_token. Яндекс не сохраняет её в кабинете: если закрыли страницу, откройте ссылку с ClientID ещё раз.</figcaption>
