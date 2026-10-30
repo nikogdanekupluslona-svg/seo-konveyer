@@ -672,13 +672,21 @@ footer{padding-block:26px 44px;color:var(--muted);font-size:13.5px}
     </li>
     <li>
       <strong>Создать проект и включить Search Console API</strong>
-      <p>Вверху выберите проект или создайте новый, например SEO. Затем откройте «APIs &amp; Services» → «Library», найдите Google Search Console API и нажмите Enable. Отдельный ключ на этом шаге копировать не нужно.</p>
+      <p>Вверху выберите проект или создайте новый, например SEO. Откройте страницу Google Search Console API и нажмите Enable. Отдельный ключ на этом шаге копировать не нужно. Баннер про пробный период сверху можно закрыть: для включения API оплата не требуется.</p>
       <a class="req-link" href="https://console.cloud.google.com/apis/library/searchconsole.googleapis.com" target="_blank" rel="noopener">Открыть Search Console API ↗</a>
+      <figure class="step-shot">
+        <img src="img/gsc-2-enable.png" width="896" height="1348" alt="Страница Google Search Console API в Google Cloud с кнопкой Enable">
+        <figcaption>Нужна кнопка Enable на странице Google Search Console API. Если проекта ещё нет, консоль попросит создать его до включения.</figcaption>
+      </figure>
     </li>
     <li>
       <strong>Скачать JSON-ключ сервисного аккаунта</strong>
-      <p>Откройте «IAM &amp; Admin» → «Service accounts» → «Create service account». Имя можно поставить seo. Роли пропускаются. Откройте созданный аккаунт, вкладка «Keys» → «Add key» → «Create new key» → JSON → «Create». Браузер скачает файл. Это и есть ключ для файла настроек. Не выкладывайте его в общий чат.</p>
-      <a class="req-link" href="https://cloud.google.com/iam/docs/keys-create-delete" target="_blank" rel="noopener">Как создать ключ в документации Google ↗</a>
+      <p>Откройте «IAM &amp; Admin» → «Service accounts» → «Create service account». Имя можно поставить seo. Роли пропускаются. Дальше откройте созданный аккаунт и скачайте ключ: вкладка Keys → Add key → Create new key → JSON → Create. Браузер скачает файл один раз. Это и есть ключ для файла настроек. Не выкладывайте его в общий чат.</p>
+      <a class="req-link" href="https://console.cloud.google.com/iam-admin/serviceaccounts" target="_blank" rel="noopener">Открыть сервисные аккаунты ↗</a>
+      <figure class="step-shot">
+        <img src="img/gsc-3-key.png" width="896" height="980" alt="Документация Google Cloud: вкладка Keys, Add key, Create new key, тип JSON">
+        <figcaption>Как скачать ключ. Цифры на скриншоте — нумерация документации Google. Тип ключа — JSON. Файл после Create больше не скачивается.</figcaption>
+      </figure>
     </li>
     <li>
       <strong>Добавить почту ключа в Search Console</strong>
